@@ -46,15 +46,13 @@ void quickSort(vector<int>& numbers, int left, int right) {
 
 int partition(vector<int>& numbers, int left, int right) {
   int pivot = numbers[right];
-  int i = left;
 
-  for (int j = left; j <= right-1; ++j) {
-    if (numbers[j] <= pivot) {
-      swap(&numbers[i], &numbers[j]);
-      ++i;
+  for (int i = left; i < right; ++i) {
+    if (numbers[i] <= pivot) {
+      swap(&numbers[i], &numbers[left++]);
     }
   }
-  swap(&numbers[i], &numbers[right]);
+  swap(&numbers[left], &numbers[right]);
 
-  return i;
+  return left;
 }
